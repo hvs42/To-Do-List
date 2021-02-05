@@ -11,16 +11,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-let port = process.env.PORT;
 
-if (port == null || port == "") {
-  port = 3000;
-}
 
 const dbURI = 'mongodb+srv://todolist:hvs2403@cluster0.oqnmf.mongodb.net/todolistDB?retryWrites=true&w=majority';
-mongoose.connect(dbURI,  { useNewUrlParser: true, useUnifiedTopology: true, 'useFindAndModify': false})
-    .then((result) => app.listen(3000, function(){console.log("Server has started successfully");}))
-    .catch((err) => console.log(err));
+mongoose.connect(dbURI,  { useNewUrlParser: true, useUnifiedTopology: true, 'useFindAndModify': false});
 
 const itemsSchema = {
     name: String
@@ -159,3 +153,10 @@ app.get("/about", function(req,res) {
 });
 
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, function() {
+    console.log("Server has started successfully");
+});
