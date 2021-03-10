@@ -2,4 +2,4 @@
 npm-debug.log
 .DS_Store
 to-do-list.code-workspace
-/*.env
+.env

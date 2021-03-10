@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -13,7 +13,7 @@ app.use(express.static("public"));
 
 
 
-const dbURI = 'mongodb+srv://todolist:hvs2403@cluster0.oqnmf.mongodb.net/todolistDB?retryWrites=true&w=majority';
+const dbURI = process.env.mongodbURL;
 mongoose.connect(dbURI,  { useNewUrlParser: true, useUnifiedTopology: true, 'useFindAndModify': false});
 
 const itemsSchema = {
